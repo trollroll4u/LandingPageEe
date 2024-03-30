@@ -1,6 +1,9 @@
+// pages/_app.js
+
 import { Fragment } from "react";
 import Head from "next/head";
 import type { AppProps } from "next/app";
+import { UserProvider } from '@auth0/nextjs-auth0/client';
 import "./global.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -13,7 +16,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
-      <Component {...pageProps} />
+      <UserProvider>
+        <Component {...pageProps} />
+      </UserProvider>
     </Fragment>
   );
 }
